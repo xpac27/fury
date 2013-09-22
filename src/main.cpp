@@ -1,4 +1,5 @@
 #include "config.h"
+#include "Game.h"
 #include <iostream>
 #include <SFML/OpenGL.hpp>
 #include <SFML/Graphics.hpp>
@@ -26,13 +27,8 @@ void setupWindow(float width, float height)
     glLoadIdentity();
 }
 
-int main()
+void setupOpenGL()
 {
-    cout << "Version " << FURY_VERSION_MAJOR << "." << FURY_VERSION_MINOR << endl;
-
-    sf::RenderWindow window(sf::VideoMode(800, 600), "fury", (sf::Style::Close | sf::Style::Resize));
-    window.clear(sf::Color::Black);
-
     glShadeModel(GL_SMOOTH);
     glCullFace(GL_FRONT);
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
@@ -44,8 +40,19 @@ int main()
     glClearDepth(GL_ONE);
     glClearStencil(GL_ZERO);
     glClearColor(GL_ZERO, GL_ZERO, GL_ZERO, GL_ZERO);
+}
 
+int main()
+{
+    cout << "Version " << FURY_VERSION_MAJOR << "." << FURY_VERSION_MINOR << endl;
+
+    sf::RenderWindow window(sf::VideoMode(800, 600), "fury", (sf::Style::Close | sf::Style::Resize));
+    sf::Clock clock;
+
+    setupOpenGL();
     setupWindow(800, 600);
+
+    Game game;
 
     while (window.isOpen())
     {
@@ -63,17 +70,10 @@ int main()
 
         glLoadIdentity();
 
-        glColorMask(GL_ONE, GL_ONE, GL_ONE, GL_ONE);
-        glClear(GL_COLOR_BUFFER_BIT);
+        game.update(clock.getElapsedTime().asSeconds());
+        clock.restart();
 
-        glBegin(GL_TRIANGLES);
-            glColor4f(1.f, 1.f, 1.f, 1.f);
-            glVertex3f(0.f, 0.f, 0.f);
-            glVertex3f(0.f, 10.f, 0.f);
-            glVertex3f(10.f, 0.f, 0.f);
-        glEnd();
-
-        glColorMask(GL_ZERO, GL_ZERO, GL_ZERO, GL_ZERO);
+        game.draw();
 
         window.display();
     }
