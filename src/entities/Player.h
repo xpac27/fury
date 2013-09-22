@@ -2,6 +2,8 @@
 #define DEF_ENTITIES_PLAYER
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include <cmath>
 #include "../math/vmath.h"
 #include "../Entity.h"
 #include "../objects/Triangle.h"
