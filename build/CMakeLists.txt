@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 2.8)
 project(fury)
 
 set(EXECUTABLE_NAME "fury")
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules")
-file(GLOB_RECURSE source_files src/*.cpp)
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
+file(GLOB_RECURSE source_files ../src/*.cpp)
 add_executable(${EXECUTABLE_NAME} ${source_files})
 
 find_package(SFML 2 REQUIRED graphics window system)

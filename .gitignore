@@ -1,3 +1,5 @@
 .*
 !.gitignore
-build
+build/*
+!build/CMakeLists.txt
+!build/modules
