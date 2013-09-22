@@ -4,27 +4,46 @@ Player::Player(float x, float y) : Entity(x, y)
 {
     speed = 30.f;
     object = new Triangle();
-    rotation.angled(object->angle);
+    angle = object->angle;
+    rotation.angle(angle);
 }
 
 void Player::update(float time)
 {
+    bool move = false;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
     {
-        position += rotation * time * speed;
+        move = true;
+        angle = 180.f;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) angle -= 45.f;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) angle += 45.f;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
     {
-        position -= rotation * time * (speed / 2.f);
+        move = true;
+        angle = 0.f;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) angle += 45.f;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) angle -= 45.f;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
-        object->angle -= 2.f;
-        rotation.angled(object->angle);
+        move = true;
+        angle = 90.f;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) angle += 45.f;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) angle -= 45.f;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
-        object->angle += 2.f;
-        rotation.angled(object->angle);
+        move = true;
+        angle = 270.f;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) angle -= 45.f;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) angle += 45.f;
+    }
+
+    if (move)
+    {
+        rotation.angle(angle);
+        position += rotation * time * speed;
+        object->angle = angle;
     }
 }

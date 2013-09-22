@@ -17,6 +17,7 @@ class Player:public Entity
     private:
 
         float speed;
+        float angle;
         Vector2f rotation;
 };
 

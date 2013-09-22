@@ -498,12 +498,7 @@ public:
       x = nx;
       y = ny;
   }
-  void angler(float radian)
-  {
-      x = sinf(radian);
-      y = cosf(radian);
-  }
-  void angled(float degree)
+  void angle(float degree)
   {
       x = sinf(DEG2RAD(-degree));
       y = cosf(DEG2RAD(-degree));
