@@ -2,6 +2,7 @@
 #define DEF_ENTITIES_PLAYER
 
 #include <SFML/Graphics.hpp>
+#include "../math/vmath.h"
 #include "../Entity.h"
 
 class Player:public Entity
@@ -15,6 +16,7 @@ class Player:public Entity
     private:
 
         float speed;
+        Vector2f direction;
 };
 
 #endif

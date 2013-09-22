@@ -4,7 +4,7 @@
 #include <iostream>
 #include <SFML/OpenGL.hpp>
 #include "Object.h"
-#include "math/Vector3.h"
+#include "math/vmath.h"
 
 class Entity
 {
@@ -20,7 +20,7 @@ class Entity
 
     protected:
 
-        Vector3 position;
+        Vector2f position;
         Object* object;
 };
 

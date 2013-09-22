@@ -5,7 +5,7 @@ Camera::Camera()
 {
     tolerance = 3.f;
     inertia = 0.1f;
-    position.x = position.y = position.z = 0.f;
+    position.x = position.y = 0.f;
 }
 
 void Camera::draw(std::vector<Entity*> *entities)

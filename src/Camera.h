@@ -16,7 +16,7 @@ class Camera
 
     private:
 
-        Vector3 position;
+        Vector2f position;
         Entity* focus;
 
         float tolerance;
