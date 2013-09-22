@@ -4,7 +4,8 @@ Game::Game()
 {
     totalEntities = 1;
     entities = new Entity[totalEntities];
-    entities[0] = Entity(10.f, 10.f);
+    entities[0] = Entity(80.f, 80.f);
+    camera.setFocus(&entities[0]);
 }
 
 void Game::draw()

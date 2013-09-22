@@ -8,21 +8,28 @@ using namespace std;
 
 void setupWindow(float width, float height)
 {
-    glViewport(0, 0, width, height);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
+    float length = 100.f;
+    float sceneWidth = 1.f;
+    float sceneHeight = 1.f;
     if (width > height)
     {
-        glOrtho(0.f, 100, 100 * (height / width), 0.f, 0.f, 1.f);
+        sceneWidth = length;
+        sceneHeight = length * (height / width);
     }
-    else if (width == height)
+    else if (width < height)
     {
-        glOrtho(0.f, 100, 100, 0.f, 0.f, 1.f);
+        sceneWidth = length * (width / height);
+        sceneHeight = length;
     }
     else
     {
-        glOrtho(0.f, 100 * (width / height), 100, 0.f, 0.f, 1.f);
+        sceneWidth = length;
+        sceneHeight = length;
     }
+    glViewport(0, 0, width, height);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(sceneWidth / -2.f, sceneWidth / 2.f, sceneHeight / 2.f, sceneHeight / -2.f, 0.f, 1.f);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }

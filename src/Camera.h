@@ -12,6 +12,15 @@ class Camera
 
         void update(float time);
         void draw(Entity* entities, int totalEntities);
+        void setFocus(Entity *entity);
+
+    private:
+
+        Vector3 position;
+        Entity* focus;
+
+        float tolerance;
+        float inertia;
 };
 
 #endif
