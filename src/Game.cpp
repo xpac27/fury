@@ -2,22 +2,21 @@
 
 Game::Game()
 {
-    totalEntities = 1;
-    entities = new Entity[totalEntities];
-    entities[0] = Entity(80.f, 80.f);
-    camera.setFocus(&entities[0]);
+    entities.push_back(new Map());
+    entities.push_back(new Player(80.f, 80.f));
+    camera.setFocus(entities[1]);
 }
 
 void Game::draw()
 {
-    camera.draw(entities, totalEntities);
+    camera.draw(&entities);
 }
 
 void Game::update(float time)
 {
-    for (int i = 0; i < totalEntities; i ++)
+    for (int i = 0; i < entities.size(); i ++)
     {
-        entities[i].update(time);
+        entities[i]->update(time);
     }
     camera.update(time);
 }

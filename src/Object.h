@@ -9,8 +9,7 @@ class Object
 
         Object();
 
-        void draw();
-        void outline();
+        virtual void draw();
 };
 
 #endif

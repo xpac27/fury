@@ -3,24 +3,27 @@
 
 Camera::Camera()
 {
-    tolerance = 5.f;
-    inertia = 0.3f;
+    tolerance = 3.f;
+    inertia = 0.1f;
     position.x = position.y = position.z = 0.f;
 }
 
-void Camera::draw(Entity* entities, int totalEntities)
+void Camera::draw(std::vector<Entity*> *entities)
 {
     glPushMatrix();
     glTranslatef(position.x * -1.f,  position.y * -1.f, 0.f);
     glColorMask(GL_ONE, GL_ONE, GL_ONE, GL_ONE);
+    glEnable(GL_BLEND);
     glClear(GL_COLOR_BUFFER_BIT);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    for (int i = 0; i < totalEntities; i ++)
+    for (int i = 0; i < entities->size(); i ++)
     {
-        entities[i].draw();
+        entities->at(i)->draw();
     }
 
     glColorMask(GL_ZERO, GL_ZERO, GL_ZERO, GL_ZERO);
+    glDisable(GL_BLEND);
     glPopMatrix();
 }
 

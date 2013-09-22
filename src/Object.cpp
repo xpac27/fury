@@ -16,7 +16,3 @@ void Object::draw()
         glVertex3f(0.f, 1.f, 0.f);
     glEnd();
 }
-
-void Object::outline()
-{
-}

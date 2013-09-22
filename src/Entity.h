@@ -1,6 +1,7 @@
 #ifndef DEF_ENTITY
 #define DEF_ENTITY
 
+#include <iostream>
 #include <SFML/OpenGL.hpp>
 #include "Object.h"
 #include "math/Vector3.h"
@@ -15,12 +16,12 @@ class Entity
         float getX();
         float getY();
         void draw();
-        void update(float time);
+        virtual void update(float time);
 
-    private:
+    protected:
 
         Vector3 position;
-        Object object;
+        Object* object;
 };
 
 #endif

@@ -11,7 +11,7 @@ class Camera
         Camera();
 
         void update(float time);
-        void draw(Entity* entities, int totalEntities);
+        void draw(std::vector<Entity*> *entities);
         void setFocus(Entity *entity);
 
     private:

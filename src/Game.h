@@ -3,6 +3,8 @@
 
 #include "Camera.h"
 #include "Entity.h"
+#include "entities/Player.h"
+#include "entities/Map.h"
 
 class Game
 {
@@ -16,8 +18,7 @@ class Game
     private:
 
         Camera camera;
-        Entity* entities;
-        int totalEntities;
+        std::vector<Entity*> entities;
 };
 
 #endif
