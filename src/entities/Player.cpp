@@ -42,17 +42,8 @@ void Player::update(float time)
 
     if (move)
     {
-        if (abs(fmod(angle - object->angle, 360.f)) > 5.f)
-        {
-            object->angle += object->angle > angle + 180 ? -360 : 360;
-            object->angle += (angle + 180 - object->angle) / 20.f;
-        }
-        else
-        {
-            object->angle = angle;
-        }
         rotation.angle(angle);
         position += rotation * time * speed;
+        object->angle += (angle - object->angle - (angle - object->angle > 180 ? 360 : 0)) * time * 10.f;
     }
-
 }
