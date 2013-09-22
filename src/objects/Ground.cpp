@@ -4,7 +4,7 @@ Ground::Ground() : Object()
 {
 }
 
-void Ground::draw()
+void Ground::drawShape()
 {
     glBegin(GL_LINES);
     glColor4f(0.f, 1.f, 0.f, 0.2f);

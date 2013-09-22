@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "../math/vmath.h"
 #include "../Entity.h"
+#include "../objects/Triangle.h"
 
 class Player:public Entity
 {
@@ -16,7 +17,7 @@ class Player:public Entity
     private:
 
         float speed;
-        Vector2f direction;
+        Vector2f rotation;
 };
 
 #endif

@@ -486,6 +486,7 @@ public:
 		y /= s;
 	}
 
+	//-------------[ angle operations ]---------------------------
   void rotate(float angle)
   {
       float s = sinf(angle);
@@ -496,6 +497,22 @@ public:
 
       x = nx;
       y = ny;
+  }
+  void angler(float radian)
+  {
+      x = sinf(radian);
+      y = cosf(radian);
+  }
+  void angled(float degree)
+  {
+      x = sinf(DEG2RAD(-degree));
+      y = cosf(DEG2RAD(-degree));
+  }
+  float deg()
+  {
+      float angle = atan2(y, x);
+      if (angle < 0) angle += 2 * M_PI;
+      return angle;
   }
 
 	/**

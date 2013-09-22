@@ -2,6 +2,7 @@
 #define DEF_OBJECT
 
 #include <SFML/OpenGL.hpp>
+#include "math/vmath.h"
 
 class Object
 {
@@ -9,7 +10,13 @@ class Object
 
         Object();
 
-        virtual void draw();
+        float angle;
+
+        void draw();
+
+    protected:
+
+        virtual void drawShape();
 };
 
 #endif

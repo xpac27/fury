@@ -1,14 +1,14 @@
-#ifndef DEF_OBJECTS_GROUND
-#define DEF_OBJECTS_GROUND
+#ifndef DEF_OBJECTS_TRIANGLE
+#define DEF_OBJECTS_TRIANGLE
 
 #include <SFML/OpenGL.hpp>
 #include "../Object.h"
 
-class Ground:public Object
+class Triangle:public Object
 {
     public:
 
-        Ground();
+        Triangle();
 
     protected:
 
