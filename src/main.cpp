@@ -1,10 +1,6 @@
-#include "config.h"
 #include "Game.h"
-#include <iostream>
 #include <SFML/OpenGL.hpp>
 #include <SFML/Graphics.hpp>
-
-using namespace std;
 
 void setupWindow(float width, float height)
 {
@@ -51,8 +47,6 @@ void setupOpenGL()
 
 int main()
 {
-    cout << "Version " << FURY_VERSION_MAJOR << "." << FURY_VERSION_MINOR << endl;
-
     sf::RenderWindow window(sf::VideoMode(800, 600), "fury", (sf::Style::Close | sf::Style::Resize));
     sf::Clock clock;
 

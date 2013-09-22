@@ -7,4 +7,4 @@ REQUIRED:
 
 INSTALLING:
 -----------
-Clone the repository then type `cmake`, then type `make` and finaly run the generated binary file `./fury`.
+Clone the repository then type `cmake .`, then type `make` and finaly run the generated binary file `./fury`.
